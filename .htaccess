@@ -1,0 +1,17 @@
+# .htaccess configuration for ICD Website
+# Controls how Apache handles PHP and access rules
+
+# Make sure PHP files are executed
+AddHandler application/x-httpd-php .php
+
+# Set default homepage
+DirectoryIndex index.php
+
+# Block direct access to sensitive include files
+<Directory "includes">
+    Order Deny,Allow
+    Deny from all
+</Directory>
+
+# Optional: Redirect 404 errors to homepage
+# ErrorDocument 404 /index.php
