@@ -1,0 +1,12 @@
+# Render deployment configuration for ICD website
+# This file tells Render how to run your PHP site
+
+services:
+  - type: web
+    name: icd-website
+    env: php
+    plan: free
+    buildCommand: ""
+    startCommand: ""
+    autoDeploy: true
+    rootDir: .
