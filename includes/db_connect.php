@@ -1,35 +1,33 @@
 <?php
 // includes/db_connect.php
-// Creates/opens the SQLite DB and ensures the tracking table exists.
-// Use this via: include __DIR__ . '/db_connect.php';
+// Connect to SQLite database and create table if it doesn't exist
 
-$db_path = __DIR__ . '/../db/tracking.db';
+$dbFile = __DIR__ . '/../icd_tracking.db';
 
-// Ensure db folder exists and is writable
-$db_dir = dirname($db_path);
-if (!is_dir($db_dir)) {
-    if (!mkdir($db_dir, 0777, true) && !is_dir($db_dir)) {
-        die("Failed to create DB directory: $db_dir");
-    }
-}
-
-// Connect to SQLite
 try {
-    $db = new PDO('sqlite:' . $db_path);
+    $db = new PDO("sqlite:" . $dbFile);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Create tracking table if it doesn't exist
-    $db->exec("CREATE TABLE IF NOT EXISTS tracking (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        tracking_number TEXT UNIQUE,
-        customer_name TEXT,
-        origin TEXT,
-        destination TEXT,
-        status TEXT,
-        notes TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );");
+    // Create table if not exists
+    $db->exec("
+        CREATE TABLE IF NOT EXISTS tracking (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            tracking_number TEXT UNIQUE,
+            customer_name TEXT,
+            origin TEXT,
+            destination TEXT,
+            service TEXT,
+            package_content TEXT,
+            package_weight TEXT,
+            declared_value TEXT,
+            additional_services TEXT,
+            third_party_account TEXT,
+            status TEXT,
+            notes TEXT,
+            email TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    ");
 } catch (PDOException $e) {
-    // Don't reveal sensitive info in production; this is helpful for debugging
-    die('Database connection failed: ' . $e->getMessage());
+    die("DB connection failed: " . htmlspecialchars($e->getMessage()));
 }
