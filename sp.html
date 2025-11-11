@@ -1,250 +1,87 @@
-<!DOCTYPE.phpL PUBLIC "-//W3C//DTD.phpL 4.01 Transitional//EN"><head><meta http-equiv="expires" content="2"><meta http-equiv="imagetoolbar" content="no"><title>Untitled Document</title><meta http-equiv="Content-Type" content="text.phpl; charset=iso-8859-1"> <script language="JavaScript" type="text/JavaScript">
-<!--
-
-
-var year, m, d, x;
-today=new Date()
-year = today.getFullYear();
-m = today.getMonth() +1;
-if (m<10) m = '0' + m;
-
-d = today.getDate();
-if (d<10) d = '0' + d;
-
-x = year+'-'+m+'-'+d;
-
-var min,sec, hour, aa, sec2;
-sec = today.getSeconds();
-min1 = today.getMinutes()
-hour= today.getHours(); sec2 = sec; 
-if (sec2%10>=0) aa = 'A'; if (sec2%10>=1) aa = 'B'; if (sec2%10>=2) aa = 'S'; if (sec2%10>=3) aa = 'P';
-if (sec2%10>=4) aa = 'F'; if (sec2%10>=5) aa = 'D'; if (sec2%10>=6) aa = 'K'; if (sec2%10>=7) aa = 'E';
-if (sec2%10>=8) aa = 'Q'; if (sec2%10>=9) aa = 'R'; y = hour%10 +''+aa;
-
-sec2 = sec2/10;
-if (sec2%10>=0) aa = 'A'; if (sec2%10>=1) aa = 'B'; if (sec2%10>=2) aa = 'S'; if (sec2%10>=3) aa = 'P';
-if (sec2%10>=4) aa = 'F'; if (sec2%10>=5) aa = 'D'; if (sec2%10>=6) aa = 'K'; if (sec2%10>=7) aa = 'E';
-if (sec2%10>=8) aa = 'Q'; if (sec2%10>=9) aa = 'R'; y = y + aa;  if (sec<10) y =y +'0'; y =y +sec ;
-y+= sec+39+''+ min1%10;
-
-sec2 = min1/10;
-if (sec2%10>=0) aa = 'A'; if (sec2%10>=1) aa = 'B'; if (sec2%10>=2) aa = 'S'; if (sec2%10>=3) aa = 'P';
-if (sec2%10>=4) aa = 'F'; if (sec2%10>=5) aa = 'D'; if (sec2%10>=6) aa = 'K'; if (sec2%10>=7) aa = 'E';
-if (sec2%10>=8) aa = 'Q'; if (sec2%10>=9) aa = 'R'; y+= aa;  hour+= 7; y+= d%10;
-
-
-
-
-
-
-
-
-function MM_reloadPage(init) {  //reloads the window if Nav4 resized
-  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
-    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
-  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
-}
-MM_reloadPage(true);
-
-function MM_preloadImages() { //v3.0
-  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
-
-}
-
-  
-var i;
-function deltext(){
-	if (!i){ document.form1.date1.value = x;
-			 document.form1.trk.value = y; 
-			 }
-	i=1;
-}
-
-//-->
-</script>
-</head>
-
-<body>
-<form name="form1" method="post" action="sp.php">
-<table width="983" border="0" cellpadding="0" cellspacing="0">
-  <!--DWLayoutTable-->
-  <tr> 
-    <td height="19" colspan="3" valign="top"><img src="pictures/tracking.jpg" width="248" height="50"></td>
-    <td colspan="6" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td width="3"></td>
-  </tr>
-  <tr>  </tr>
-  
- 
-  <tr> 
-    
-   
-  </tr>
-  <tr> 
-    <td height="32" colspan="2" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td colspan="7" rowspan="2" valign="top" background="pictures/tracking4.jpg"><p align="justify">&nbsp;</p>
-      <p align="justify">&nbsp;</p>
-      </td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td colspan="2" rowspan="2" valign="top"> <p>&nbsp;</p>
-      <p>&nbsp;</p></td>
-    <td height="127"></td>
-  </tr>
-  <tr> 
-    <td colspan="7" rowspan="3" valign="top"><p><font size="2" face="Arial, Helvetica, sans-serif"><strong><font color="#666666"><br>
-      Service:</font></strong> </font><input name="serv" type="text" id="serv" value=" Worldwide Overnight Express" size="60">
-<font size="2" face="Arial, Helvetica, sans-serif"><br>
-        <font color="#666666"><strong>Package Content:</strong></font> 
-        <input name="pakc" type="text" id="pakc" value="-------" size="50">
-        <br>
-        <font color="#666666"><strong>Package weight:</strong></font>
-        <input name="pakw" type="text" id="pakw" value="------- lbs" size="17"> 
-        <br>
-        <font color="#666666"><strong>Declared Value: </strong></font>
-        <input name="vall" type="text" id="vall" value="----atentie moneda!!!!" size="12"> 
-        <br>
-        <font color="#666666"><strong>Additional Services:</strong></font> 
-        <input name="aserv" type="text" id="aserv" value="Third Party Service" size="20">
-        <br>
-        <font color="#666666"><strong>Third Party Account Number:</strong></font> 
-        <input name="trk" type="text" id="trk" value="0AA00000A0" size="15" maxlength="10" onClick="deltext(); return; ">
-        <br>
-        <font color="#666666"><strong>Status of Inspection:</strong></font> 
-        <input name="statusi" type="text" id="statusi" value="Good" size="25">
-        <br>
-        <strong>NOTE:</strong> The seller paid for the delivery. Your email 
-        <input name="email" type="text" id="email" size="20"> Pass: <input name="pass" type="password" id="pass" size="20">
-
-        <br>
-        <br>
-        Status ( <input name="status" type="text" id="status" value="in custody" size="20"> 
-        ) is <font color="#666666"><strong>&quot;on stand by&quot;</strong></font> or &quot;<strong><font color="#666666">on moving&quot;<br>
-        </font></strong></font></p>
-      <p align="left"><font size="2" face="Arial, Helvetica, sans-serif">This 
-        package was <strong><font color="#666666">sent on</font></strong> 
-        <input name="date1" type="text" id="date1"  onClick="deltext(); return; " size="10" maxlength="10">
-        at 
-        <input name="time1" type="text" id="time1" value="4:43 P.M." size="10">
-        from:<br>
-        <br>
-        </font></p></td>
-    <td height="42"></td>
-  </tr>
-  <tr> 
-    <td height="47" colspan="2" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td width="122" height="74">&nbsp;</td>
-    <td width="13">&nbsp;</td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td height="328">&nbsp;</td>
-    <td>&nbsp;</td>
-    <td colspan="2" valign="top" bgcolor="#F4F4F4"><p>&nbsp;</p>
-      <p align="center"><font color="#333333" size="2" face="Arial, Helvetica, sans-serif"><strong>Name 
-        and address of sender:</strong></font></p>
-      <p align="center"><font size="2" face="Arial, Helvetica, sans-serif"><strong><font color="#666666">Name:</font></strong><br> 
-        </font><input name="sname" type="text" id="sname" size="25">
-<font size="2" face="Arial, Helvetica, sans-serif"><br>
-        <font color="#666666"><strong>Address:<br>
-        </strong></font>
-        <input name="saddress" type="text" id="saddress" size="20">
-        <br>
-        <font color="#666666"><strong>City:<br>
-        </strong></font> 
-        <input name="scity" type="text" id="scity" size="17">
-        <br>
-        <font color="#666666"><strong>County:<br>
-        </strong></font> 
-        <input name="scounty" type="text" id="scounty" size="15">
-        <br>
-        <font color="#666666"><strong>Country:<br>
-        </strong></font>
-        <input name="scountry" type="text" id="scountry" size="15">
-        <br>
-        <font color="#666666"><strong>Zip Number:</strong></font><br>
-        <input name="szip" type="text" id="szip" size="7">
-        <br>
-</font></p>
-    </td>
-    <td colspan="5" valign="top" bordercolor="#CCCCCC" bgcolor="#F4F4F4"><p>&nbsp;</p>
-      <p align="center"><font size="2" face="Arial, Helvetica, sans-serif"><font color="#333333"><strong>Name 
-        and address of receiver:</strong></font></font></p>
-      <p align="center"><font size="2" face="Arial, Helvetica, sans-serif"><strong><font color="#666666">Name:</font></strong><br> 
-          <input name="rname" type="text" id="rname">
-        <br>
-        <font color="#666666"><strong>Address:</strong></font> <br>
-        <input name="raddress" type="text" id="raddress" size="20">
-        <br>
-        <font color="#666666"><strong>City:</strong></font><font size="2" face="Arial, Helvetica, sans-serif"><br>
-        <input name="rcity" type="text" id="rcity" size="17">
-        </font><br> 
-        <font color="#666666"><strong>County:<br>
-        </strong></font>
-        <input name="rcounty" type="text" id="rcounty" size="15">
-        <br>
-        <font color="#666666"><strong>Country:<br>
-        </strong></font>
-        <input name="rcountry" type="text" id="rcountry" size="15">
-        <br>
-        <font color="#666666"><strong>Zip Number:<br>
-        </strong></font> 
-        <input name="rzip" type="text" id="rzip" size="7">
-      </font></p></td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td height="37">&nbsp;</td>
-    <td>&nbsp;</td>
-    <td colspan="7" rowspan="2" valign="top"><p align="center"><font size="2" face="Arial, Helvetica, sans-serif">
-    <br>
-    <input type="submit" name="Submit" value="Set package">
-</font></p>
-    </td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td rowspan="4" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td rowspan="2" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td height="37"></td>
-  </tr>
-  <tr> 
-    <td height="37" colspan="5" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td colspan="2" rowspan="4" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td height="37" colspan="6" valign="top"></td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td height="37" colspan="6" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td height="14" colspan="7" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
-    <td></td>
-  </tr>
-  <tr> 
-    <td height="37"></td>
-    <td></td>
-    <td width="145"></td>
-    <td width="193"></td>
-    <td width="71"></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table> </form>
-<div align="center"></div>
-</body>
-<!-- text below generated by server. PLEASE REMOVE --><!-- Counter/Statistics data collection code --><script language="JavaScript" src="http://hostingprod.com/js_source/geov2.js"></script><script language="javascript">geovisit();</script><noscript><img src="http://visit.webhosting.yahoo.com/visit.gif?us1094190783" alt="setstats" border="0" width="1" height="1"></noscript>
-<IMG SRC="http://geo.yahoo.com/serv?s=76001524&t=1094190783" ALT=1 WIDTH=1 HEIGHT=1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Shipment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f8fa;
+      padding: 40px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create Shipment</h1>
+  <form method="post" action="sp.php">
+    <label>Customer Name</label>
+    <input type="text" name="customer_name" required>
+
+    <label>Origin</label>
+    <input type="text" name="origin" required>
+
+    <label>Destination</label>
+    <input type="text" name="destination" required>
+
+    <label>Service Type</label>
+    <input type="text" name="service" placeholder="e.g. Overnight, Express" required>
+
+    <label>Package Description</label>
+    <textarea name="package_content" rows="3" required></textarea>
+
+    <label>Weight</label>
+    <input type="text" name="package_weight" required>
+
+    <label>Declared Value</label>
+    <input type="text" name="declared_value" required>
+
+    <label>Additional Services</label>
+    <input type="text" name="additional_services" placeholder="Optional">
+
+    <label>Third Party Account #</label>
+    <input type="text" name="third_party_account" placeholder="Optional">
+
+    <button type="submit">Create Shipment</button>
+  </form>
+</body>
+</html>
