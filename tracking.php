@@ -2,41 +2,60 @@
 include __DIR__ . '/includes/db_connect.php';
 
 $tn = trim($_POST['tracking_number'] ?? ($_GET['tracking_number'] ?? ''));
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"><title>Track Shipment</title></head>
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Track Shipment</title></head>
 <body>
-<h1>Track Your Shipment</h1>
+<h1>Track your shipment</h1>
 
 <?php if ($tn === ''): ?>
 <form method="post" action="tracking.php">
-    <label for="tracking_number">Tracking number</label>
-    <input type="text" name="tracking_number" id="tracking_number">
-    <button type="submit">Track</button>
+  <label for="tracking_number">Tracking Number:</label>
+  <input id="tracking_number" name="tracking_number" type="text" value="">
+  <button type="submit">Search</button>
 </form>
-<?php else: 
+<?php else: ?>
+<?php
 $stmt = $db->prepare("SELECT * FROM tracking WHERE tracking_number = :t LIMIT 1");
-$stmt->execute([':t' => $tn]);
+$stmt->execute([':t'=>$tn]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
 if ($row):
 ?>
-<h2>Tracking Number: <?= htmlspecialchars($row['tracking_number']) ?></h2>
-<p>Status: <strong><?= htmlspecialchars($row['status']) ?></strong></p>
-<p>Service: <?= htmlspecialchars($row['service']) ?></p>
-<p>Package Content: <?= htmlspecialchars($row['package_content']) ?></p>
-<p>Package Weight: <?= htmlspecialchars($row['package_weight']) ?></p>
-<p>Declared Value: <?= htmlspecialchars($row['declared_value']) ?></p>
-<p>Additional Services: <?= htmlspecialchars($row['additional_services']) ?></p>
-<p>Third Party Account: <?= htmlspecialchars($row['third_party_account']) ?></p>
-<p>From: <?= htmlspecialchars($row['origin']) ?> — To: <?= htmlspecialchars($row['destination']) ?></p>
-<p>Notes: <?= nl2br(htmlspecialchars($row['notes'])) ?></p>
-<p>Created: <?= htmlspecialchars($row['created_at']) ?></p>
+<h2>Tracking: <?=htmlspecialchars($row['tracking_number'])?></h2>
+<ul>
+<li>Status: <strong><?=htmlspecialchars($row['status'])?></strong></li>
+<li>Service: <?=htmlspecialchars($row['service'])?></li>
+<li>Package Content: <?=htmlspecialchars($row['package_content'])?></li>
+<li>Package Weight: <?=htmlspecialchars($row['package_weight'])?></li>
+<li>Declared Value: <?=htmlspecialchars($row['declared_value'])?></li>
+<li>Additional Services: <?=htmlspecialchars($row['additional_services'])?></li>
+<li>Third Party Account: <?=htmlspecialchars($row['third_party_account'])?></li>
+<li>Sent on: <?=htmlspecialchars($row['created_at'])?></li>
+</ul>
+
+<h3>Sender</h3>
+<p>Name: <?=htmlspecialchars($row['sender_name'])?><br>
+Address: <?=htmlspecialchars($row['sender_address'])?><br>
+City: <?=htmlspecialchars($row['sender_city'])?><br>
+County: <?=htmlspecialchars($row['sender_county'])?><br>
+Country: <?=htmlspecialchars($row['sender_country'])?><br>
+Zip: <?=htmlspecialchars($row['sender_zip'])?></p>
+
+<h3>Receiver</h3>
+<p>Name: <?=htmlspecialchars($row['receiver_name'])?><br>
+Address: <?=htmlspecialchars($row['receiver_address'])?><br>
+City: <?=htmlspecialchars($row['receiver_city'])?><br>
+County: <?=htmlspecialchars($row['receiver_county'])?><br>
+Country: <?=htmlspecialchars($row['receiver_country'])?><br>
+Zip: <?=htmlspecialchars($row['receiver_zip'])?></p>
+
+<p><a href="tracking.php">Check another</a></p>
 <?php else: ?>
-<p>No record found for <strong><?= htmlspecialchars($tn) ?></strong>.</p>
+<p>No record found for <strong><?=htmlspecialchars($tn)?></strong>. Please try again.</p>
+<p><a href="tracking.php">Back</a></p>
 <?php endif; ?>
-<p><a href="tracking.php">Track another</a></p>
 <?php endif; ?>
 </body>
 </html>

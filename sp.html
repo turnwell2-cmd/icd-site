@@ -1,87 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Create Shipment</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f6f8fa;
-      padding: 40px;
-      color: #333;
-    }
-    h1 {
-      text-align: center;
-      color: #222;
-    }
-    form {
-      max-width: 600px;
-      margin: 20px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Create Shipment</title>
+<style>
+body { font-family: Arial, sans-serif; color: #333; }
+form { width: 80%; margin: auto; }
+fieldset { margin-bottom: 20px; padding: 10px; }
+legend { font-weight: bold; }
+label { display: inline-block; width: 200px; margin-bottom: 5px; }
+input, select { width: 250px; margin-bottom: 10px; }
+button { padding: 10px 20px; }
+</style>
 </head>
 <body>
-  <h1>Create Shipment</h1>
-  <form method="post" action="sp.php">
-    <label>Customer Name</label>
-    <input type="text" name="customer_name" required>
+<h1 style="text-align:center;">Create a New Shipment</h1>
+<form action="sp.php" method="post">
 
-    <label>Origin</label>
-    <input type="text" name="origin" required>
+<fieldset>
+<legend>Shipment Details</legend>
+<label for="service">Service:</label>
+<input type="text" id="service" name="service" required><br>
 
-    <label>Destination</label>
-    <input type="text" name="destination" required>
+<label for="package">Package Content:</label>
+<input type="text" id="package" name="package" required><br>
 
-    <label>Service Type</label>
-    <input type="text" name="service" placeholder="e.g. Overnight, Express" required>
+<label for="weight">Package Weight:</label>
+<input type="text" id="weight" name="weight" required><br>
 
-    <label>Package Description</label>
-    <textarea name="package_content" rows="3" required></textarea>
+<label for="declared">Declared Value:</label>
+<input type="text" id="declared" name="declared"><br>
 
-    <label>Weight</label>
-    <input type="text" name="package_weight" required>
+<label for="additional">Additional Services:</label>
+<input type="text" id="additional" name="additional"><br>
 
-    <label>Declared Value</label>
-    <input type="text" name="declared_value" required>
+<label for="account_no">Third Party Account Number:</label>
+<input type="text" id="account_no" name="account_no"><br>
 
-    <label>Additional Services</label>
-    <input type="text" name="additional_services" placeholder="Optional">
+<label for="email">Your Email:</label>
+<input type="email" id="email" name="email" required>
+</fieldset>
 
-    <label>Third Party Account #</label>
-    <input type="text" name="third_party_account" placeholder="Optional">
+<fieldset>
+<legend>Sender Information</legend>
+<label for="sender_name">Name:</label>
+<input type="text" id="sender_name" name="sender_name" required><br>
 
-    <button type="submit">Create Shipment</button>
-  </form>
+<label for="sender_addr">Address:</label>
+<input type="text" id="sender_addr" name="sender_addr"><br>
+
+<label for="sender_city">City:</label>
+<input type="text" id="sender_city" name="sender_city"><br>
+
+<label for="sender_county">County:</label>
+<input type="text" id="sender_county" name="sender_county"><br>
+
+<label for="sender_country">Country:</label>
+<input type="text" id="sender_country" name="sender_country"><br>
+
+<label for="sender_zip">Zip Code:</label>
+<input type="text" id="sender_zip" name="sender_zip"><br>
+</fieldset>
+
+<fieldset>
+<legend>Receiver Information</legend>
+<label for="receiver_name">Name:</label>
+<input type="text" id="receiver_name" name="receiver_name" required><br>
+
+<label for="receiver_addr">Address:</label>
+<input type="text" id="receiver_addr" name="receiver_addr"><br>
+
+<label for="receiver_city">City:</label>
+<input type="text" id="receiver_city" name="receiver_city"><br>
+
+<label for="receiver_county">County:</label>
+<input type="text" id="receiver_county" name="receiver_county"><br>
+
+<label for="receiver_country">Country:</label>
+<input type="text" id="receiver_country" name="receiver_country"><br>
+
+<label for="receiver_zip">Zip Code:</label>
+<input type="text" id="receiver_zip" name="receiver_zip"><br>
+</fieldset>
+
+<div style="text-align:center;">
+<button type="submit">Create Shipment</button>
+</div>
+
+</form>
 </body>
 </html>
